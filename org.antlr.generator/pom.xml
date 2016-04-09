@@ -12,6 +12,14 @@
 	<version>3.5.3-SNAPSHOT</version>
 
 	<name>Antlr 3.5 Generator</name>
+	
+	<repositories>
+		<repository>
+			<id>antlr3-github-mvn-repo</id>
+			<name>Private ANTLR3 github maven repo</name>
+			<url>https://timeraider4u.github.io/antlr3/</url>
+		</repository>
+	</repositories>
 
 	<properties>
 		<mavenVersion>3.0.4</mavenVersion>
@@ -30,8 +38,10 @@
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr-runtime</artifactId>
 			<version>[3.5.3-SNAPSHOT]</version>
+			<!--
 			<systemPath>${project.basedir}/lib/antlr-runtime-3.5.3-SNAPSHOT.jar</systemPath>
 			<scope>system</scope>
+			-->
 		</dependency>
 	</dependencies>
 	<build>
