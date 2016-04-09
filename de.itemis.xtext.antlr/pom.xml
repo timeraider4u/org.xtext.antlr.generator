@@ -8,7 +8,7 @@
 	</parent>
 	<groupId>org.eclipse.xtext</groupId>
 	<artifactId>xtext-antlr-generator</artifactId>
-	<version>2.1.1-SNAPSHOT</version>
+	<version>3.5.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Xtext Antlr Generator</name>
@@ -66,7 +66,9 @@
 		<dependency>
 			<groupId>org.xtext</groupId>
 			<artifactId>antlr-generator</artifactId>
-			<version>3.2.1-SNAPSHOT</version>
+			<version>3.5.3-SNAPSHOT</version>
+			<systemPath>${project.basedir}/../org.antlr.generator/target/antlr-generator-3.5.3-SNAPSHOT.jar</systemPath>
+			<scope>system</scope>
 		</dependency>
 	</dependencies>
 	<build>

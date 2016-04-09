@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="project" default="default" basedir="..">
 	<property file="create-download/create-download.properties" />
-	<property name="jar.file" value="upload/antlr-generator-3.2.0-patch.jar" />
+	<property name="jar.file" value="upload/antlr-generator-3.5.3-patch.jar" />
 
 	<target name="default">
 		<echo>Deleting old file '${jar.file}'</echo>
@@ -16,8 +16,10 @@
 			<fileset dir="./bin" includes="**/*" />
 		</jar>
 
+		<!--
 		<echo>Uploading jarfile</echo>
 		<scp file="${jar.file}" todir="oaw@ftp.itemis.de:/data/ftp/download" keyfile="${user.home}/.ssh/id_rsa" />
+		-->
 		<echo>Finished</echo>
 	</target>
 
