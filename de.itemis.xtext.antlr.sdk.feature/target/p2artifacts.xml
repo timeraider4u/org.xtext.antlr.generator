@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='org.eclipse.update.feature' id='de.itemis.xtext.antlr.sdk.feature' version='3.5.3.201604102356'>
+  <artifact classifier='org.eclipse.update.feature' id='de.itemis.xtext.antlr.sdk.feature' version='3.5.3.201604111839'>
     <properties size='6'>
-      <property name='artifact.size' value='4028'/>
-      <property name='download.size' value='4028'/>
+      <property name='artifact.size' value='4027'/>
+      <property name='download.size' value='4027'/>
       <property name='maven-groupId' value='org.xtext'/>
       <property name='maven-artifactId' value='de.itemis.xtext.antlr.sdk.feature'/>
       <property name='maven-version' value='3.5.3-SNAPSHOT'/>

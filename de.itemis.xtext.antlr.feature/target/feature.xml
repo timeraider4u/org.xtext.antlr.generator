@@ -2,7 +2,7 @@
 <feature
       id="de.itemis.xtext.antlr.feature"
       label="%featureName"
-      version="3.5.3.201604102356"
+      version="3.5.3.201604111839"
       provider-name="%providerName">
 
    <description>
@@ -29,26 +29,26 @@
          id="de.itemis.xtext.antlr"
          download-size="8"
          install-size="14"
-         version="3.5.3.201604102356"
+         version="3.5.3.201604111839"
          unpack="false"/>
 
    <plugin
          id="org.antlr.generator"
          download-size="2245"
          install-size="5173"
-         version="3.5.3.201604102356"
+         version="3.5.3.201604111839"
          unpack="false"/>
 	<plugin
          id="antlr-generator"
          download-size="792"
          install-size="1591"
-         version="3.5.3.201604102356"
+         version="3.5.3.201604111839"
          unpack="false"/>
 	<plugin
          id="xtext-antlr-generator"
          download-size="792"
          install-size="1591"
-         version="3.5.3.201604102356"
+         version="3.5.3.201604111839"
          unpack="false"/>
 
 </feature>

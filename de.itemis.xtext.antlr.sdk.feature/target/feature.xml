@@ -2,7 +2,7 @@
 <feature
       id="de.itemis.xtext.antlr.sdk.feature"
       label="%featureName"
-      version="3.5.3.201604102356"
+      version="3.5.3.201604111839"
       provider-name="%providerName">
 
    <description>
@@ -27,7 +27,7 @@
 
    <includes
          id="de.itemis.xtext.antlr.feature"
-         version="3.5.3.201604102356"/>
+         version="3.5.3.201604111839"/>
 
 	<!--
    <includes
