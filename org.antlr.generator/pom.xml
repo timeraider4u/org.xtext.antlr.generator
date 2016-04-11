@@ -2,49 +2,23 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
+		<groupId>org.xtext</groupId>
+		<artifactId>parent</artifactId>
+		<version>3.5.3-SNAPSHOT</version>
 	</parent>
-	<groupId>org.xtext</groupId>
-	<artifactId>antlr-generator</artifactId>
-	<packaging>jar</packaging>
-	<version>3.5.3-SNAPSHOT</version>
+	<artifactId>org.antlr.generator</artifactId>
+	<packaging>eclipse-plugin</packaging>
 
 	<name>Antlr 3.5 Generator</name>
-	
-	<repositories>
-		<repository>
-			<id>antlr3-github-mvn-repo</id>
-			<name>Private ANTLR3 github maven repo</name>
-			<url>https://timeraider4u.github.io/antlr3/</url>
-		</repository>
-	</repositories>
 
-	<properties>
-		<mavenVersion>3.0.4</mavenVersion>
-		<log4j.version>1.2.16</log4j.version>
-		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>ISO-8859-1</project.reporting.outputEncoding>
-		<github.global.server>github</github.global.server>
-	</properties>
+	
 	<licenses>
 		<license>
 			<name>Eclipse Public License - v 1.0</name>
 			<url>http://www.eclipse.org/legal/epl-v10.html</url>
 		</license>
 	</licenses>
-	<dependencies>
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr-runtime</artifactId>
-			<version>[3.5.3-SNAPSHOT]</version>
-			<!--
-			<systemPath>${project.basedir}/lib/antlr-runtime-3.5.3-SNAPSHOT.jar</systemPath>
-			<scope>system</scope>
-			-->
-		</dependency>
-	</dependencies>
+	
 	<build>
 		<resources>
 			<resource>
@@ -78,17 +52,57 @@
 			          <delete 
 			            dir="${project.basedir}/org"
 			            includeemptydirs="true"/>
-			          <unzip src="${project.basedir}/lib/antlr-runtime-${version}.jar" dest="${project.basedir}/">
-    					<patternset>
-        					<include name="antlr/**"/>
-        					<include name="org/**"/>
-    					</patternset>
-					  </unzip>
+			         
 			        </target>
 			      </configuration>
 			    </execution>
 			  </executions>
 			</plugin>
+			
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+					 <executions>
+						<execution>
+							<id>unpack-libs</id>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>unpack</goal>
+							</goals>
+							<configuration>
+								<artifactItems>
+									<artifactItem>
+										<groupId>org.antlr</groupId>
+										<artifactId>org.antlr.runtime</artifactId>
+										<version>${project.version}</version>
+										<type>jar</type>
+										<overWrite>true</overWrite>
+ 										<outputDirectory>${project.basedir}</outputDirectory>
+									</artifactItem>
+									<artifactItem>
+										<groupId>org.antlr</groupId>
+										<artifactId>org.antlr.stringtemplate</artifactId>
+										<version>${project.version}</version>
+										<type>jar</type>
+										<overWrite>true</overWrite>
+ 										<outputDirectory>${project.basedir}</outputDirectory>
+									</artifactItem>
+									<artifactItem>
+										<groupId>org.antlr</groupId>
+										<artifactId>org.antlr.tool</artifactId>
+										<version>${project.version}</version>
+										<type>jar</type>
+										<overWrite>true</overWrite>
+ 										<outputDirectory>${project.basedir}</outputDirectory>
+									</artifactItem>
+								</artifactItems>
+								<includes>antlr/**,org/**</includes>
+								<excludes>META-INF/**</excludes>
+							</configuration>
+						</execution>
+					</executions>
+            </plugin>
 			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -144,54 +158,10 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.1</version>
-					<configuration>
-						<deployAtEnd>false</deployAtEnd>
-						<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>com.github.github</groupId>
-					<artifactId>site-maven-plugin</artifactId>
-					<version>0.12</version>
-					<configuration>
-						<branch>refs/heads/gh-pages</branch>
-						<includes>
-							<include>**/*</include>
-						</includes>
-						<merge>true</merge>
-						<message>Creating site for ${project.version}</message>
-						<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
-						<!--<path>${updates}/${output-dir}/</path>-->
-						<repositoryName>org.xtext.antlr.generator</repositoryName>
-						<repositoryOwner>timeraider4u</repositoryOwner>
-						<noJekyll>true</noJekyll>
-					</configuration>
-					<executions>
-						<execution>
-							<goals>
-								<goal>site</goal>
-							</goals>
-							<phase>deploy</phase>
-						</execution>
-					</executions>
-				</plugin>
 			
         </plugins>
 
     </build>
-	 
-	 <distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<name>Temporary Staging Repository</name>
-			<url>file://${project.build.directory}/mvn-repo</url>
-		</repository>
-	</distributionManagement>
 	
 	<scm>
 		<connection>scm:git:https://github.com/svenefftinge/org.xtext.antlr.generator.git</connection>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cs:cspec xmlns:cs="http://www.eclipse.org/buckminster/CSpec-1.0" name="de.itemis.xtext.antlr.releng" componentType="buckminster" version="1.0.0.qualifier">
     <cs:dependencies>
-        <cs:dependency name="org.antlr.runtime" componentType="osgi.bundle" versionDesignator="3.2.0"/>
+        <cs:dependency name="org.antlr.runtime" componentType="osgi.bundle" versionDesignator="3.5.3"/>
         <cs:dependency name="org.apache.log4j" componentType="osgi.bundle"/>
         <cs:dependency name="org.eclipse.core.runtime" componentType="osgi.bundle" versionDesignator="[3.5.0,3.6.0)"/>
         <cs:dependency name="org.eclipse.pde.core" componentType="osgi.bundle"/>

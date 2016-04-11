@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="de.itemis.xtext.antlr.sdk"
+      id="de.itemis.xtext.antlr.sdk.feature"
       label="%featureName"
-      version="2.1.1.qualifier"
+      version="3.5.3.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -22,15 +22,17 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://download.itemis.com/updates/"/>
+      <update label="%updateSiteName" url="http://timeraider4u.github.io/org.xtext.antlr.generator/"/>
    </url>
 
    <includes
          id="de.itemis.xtext.antlr.feature"
          version="0.0.0"/>
 
+	<!--
    <includes
          id="de.itemis.xtext.antlr.source.feature"
          version="0.0.0"/>
-
+	-->
+	
 </feature>

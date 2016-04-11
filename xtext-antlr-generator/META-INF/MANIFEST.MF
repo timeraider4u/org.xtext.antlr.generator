@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Antlr Generator Plug-in
+Bundle-SymbolicName: xtext-antlr-generator
+Bundle-Version: 3.5.3.qualifier
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.antlr.runtime;bundle-version="3.5.3"
+Export-Package: org.antlr;version="3.5.3",
+ org.antlr.analysis;version="3.5.3",
+ org.antlr.codegen;version="3.5.3",
+ org.antlr.grammar.v3;version="3.5.3",
+ org.antlr.misc;version="3.5.3",
+ org.antlr.stringtemplate;version="3.5.3",
+ org.antlr.stringtemplate.language;version="3.5.3",
+ org.antlr.stringtemplate.misc;version="3.5.3",
+ org.antlr.tool;version="3.5.3"

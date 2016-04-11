@@ -2,7 +2,7 @@
 <feature
       id="de.itemis.xtext.antlr.feature"
       label="%featureName"
-      version="2.1.1.qualifier"
+      version="3.5.3.qualifier"
       provider-name="%providerName">
 
    <description>
@@ -22,7 +22,7 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://download.itemis.com/updates/"/>
+      <update label="%updateSiteName" url="http://timeraider4u.github.io/org.xtext.antlr.generator/"/>
    </url>
 
    <plugin
@@ -34,6 +34,18 @@
 
    <plugin
          id="org.antlr.generator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+	<plugin
+         id="antlr-generator"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+	<plugin
+         id="xtext-antlr-generator"
          download-size="0"
          install-size="0"
          version="0.0.0"

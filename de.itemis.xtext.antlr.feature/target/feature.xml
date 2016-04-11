@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="de.itemis.xtext.antlr.feature"
+      label="%featureName"
+      version="3.5.3.201604102356"
+      provider-name="%providerName">
+
+   <description>
+      Additional plugins for Xtext
+   </description>
+
+   <copyright>
+      Copyright (c) 2009 itemis AG (http://www.itemis.eu) and others.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://timeraider4u.github.io/org.xtext.antlr.generator/"/>
+   </url>
+
+   <plugin
+         id="de.itemis.xtext.antlr"
+         download-size="8"
+         install-size="14"
+         version="3.5.3.201604102356"
+         unpack="false"/>
+
+   <plugin
+         id="org.antlr.generator"
+         download-size="2245"
+         install-size="5173"
+         version="3.5.3.201604102356"
+         unpack="false"/>
+	<plugin
+         id="antlr-generator"
+         download-size="792"
+         install-size="1591"
+         version="3.5.3.201604102356"
+         unpack="false"/>
+	<plugin
+         id="xtext-antlr-generator"
+         download-size="792"
+         install-size="1591"
+         version="3.5.3.201604102356"
+         unpack="false"/>
+
+</feature>

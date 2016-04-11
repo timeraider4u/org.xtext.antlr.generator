@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.xtext</groupId>
+  <artifactId>de.itemis.xtext.antlr.build.feature</artifactId>
+  <versioning>
+    <versions>
+      <version>3.5.3-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20160411000647</lastUpdated>
+  </versioning>
+</metadata>
