@@ -1,0 +1,232 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+	<groupId>org.xtext</groupId>
+	<artifactId>antlr-generator</artifactId>
+	<packaging>jar</packaging>
+	<version>3.2.1-SNAPSHOT</version>
+
+	<name>Antlr 3.2 Generator</name>
+
+	<properties>
+		<mavenVersion>3.0.4</mavenVersion>
+		<log4j.version>1.2.16</log4j.version>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>ISO-8859-1</project.reporting.outputEncoding>
+		<!-- github server corresponds to entry in ~/.m2/settings.xml -->
+		<github.global.server>github</github.global.server>
+	</properties>
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v 1.0</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+		</license>
+	</licenses>
+	<dependencies>
+		<!--
+		<dependency>
+			<groupId>org.antlr</groupId>
+			<artifactId>antlr-runtime</artifactId>
+			<version>[3.2]</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>jmxtools</artifactId>
+					<groupId>com.sun.jdmk</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxri</artifactId>
+					<groupId>com.sun.jmx</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jms</artifactId>
+					<groupId>javax.jms</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mail</artifactId>
+					<groupId>javax.mail</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>${project.basedir}</directory>
+				<includes>
+					<include>antlr/**/*</include>
+					<include>org/**/*</include>
+					<include>about_files/**/*</include>
+					<include>about.html</include>
+				</includes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptors>
+						<descriptor>${project.basedir}/assembly-src.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sourcepath>source-bundle</sourcepath>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.4</version>
+				<configuration>
+					<executable>/usr/local/bin/gpg</executable>
+					<skip>true</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+			<!-- deploy to github repo -->
+			<plugin>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.5.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+					<deployAtEnd>false</deployAtEnd>
+					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.5</version>
+				<configuration>
+					<skip>true</skip>
+					<skip-deploy>true</skip-deploy>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.11</version>
+				<configuration>
+					<message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+					<noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
+					<branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+					<includes><include>**/*</include></includes>
+					<merge>true</merge>
+					<repositoryName>org.xtext.antlr.generator</repositoryName>      <!-- github repo name -->
+					<repositoryOwner>timeraider4u</repositoryOwner>    <!-- github username  -->
+				</configuration>
+				<executions>
+					<!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>deploy</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<distributionManagement>
+		<repository>
+			<id>internal.repo</id>
+			<name>Temporary Staging Repository</name>
+			<url>file://${project.build.directory}/mvn-repo</url>
+		</repository>
+	</distributionManagement>
+	
+	<scm>
+		<connection>scm:git:https://github.com/svenefftinge/org.xtext.antlr.generator.git</connection>
+		<developerConnection>scm:git:https://github.com/svenefftinge/org.xtext.antlr.generator.git</developerConnection>
+		<url>https://github.com/svenefftinge/org.xtext.antlr.generator.git</url>
+	</scm>
+	<url>http://www.eclipse.org/xtext/</url>
+	<description>Antlr Generator for Xtext</description>
+	<developers>
+		<developer>
+			<id>dennis.huebner</id>
+			<name>Dennis</name>
+			<email>dennis.huebner@itemis.de</email>
+			<organization>itemis AG</organization>
+		</developer>
+		<developer>
+			<id>holger.schill</id>
+			<name>Holger</name>
+			<email>Holger.Schill@itemis.de</email>
+			<organization>itemis AG</organization>
+		</developer>
+		<developer>
+			<id>jan.koehnlein</id>
+			<name>Jan</name>
+			<email>jan.koehnlein@itemis.de</email>
+			<organization>itemis AG</organization>
+		</developer>
+		<developer>
+			<id>sebastian.zarnekow</id>
+			<name>Sebastian</name>
+			<email>sebastian.Zarnekow@itemis.de</email>
+			<organization>itemis AG</organization>
+		</developer>
+		<developer>
+			<id>sven.efftinge</id>
+			<name>Sven</name>
+			<email>sven.efftinge@itemis.de</email>
+			<organization>itemis AG</organization>
+			<roles>
+				<role>project lead</role>
+			</roles>
+		</developer>
+	</developers>
+
+</project>
