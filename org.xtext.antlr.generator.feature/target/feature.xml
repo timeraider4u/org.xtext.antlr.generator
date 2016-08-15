@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.xtext.antlr.generator.feature"
+      label="org.xtext.antlr.generator.feature"
+      version="3.2.1.201604141818">
+
+   <plugin
+         id="org.xtext.antlr.generator"
+         download-size="1616"
+         install-size="3665"
+         version="3.2.1.201604141817"
+         unpack="false"/>
+
+</feature>

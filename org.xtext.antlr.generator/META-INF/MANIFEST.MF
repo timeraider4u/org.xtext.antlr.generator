@@ -4,6 +4,7 @@ Bundle-Name: Antlr Generator Plug-in
 Bundle-SymbolicName: org.xtext.antlr.generator
 Bundle-Version: 3.2.1.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.apache.log4j
 Export-Package: antlr;version="3.2.1",
  antlr.actions.java;version="3.2.1",
  antlr.build;version="3.2.1",
@@ -12,6 +13,7 @@ Export-Package: antlr;version="3.2.1",
  antlr.debug;version="3.2.1",
  antlr.debug.misc;version="3.2.1",
  antlr.preprocessor;version="3.2.1",
+ de.itemis.xtext.antlr.toolrunner;version="3.2.1",
  org.antlr;version="3.2.1",
  org.antlr.analysis;version="3.2.1",
  org.antlr.codegen;version="3.2.1",

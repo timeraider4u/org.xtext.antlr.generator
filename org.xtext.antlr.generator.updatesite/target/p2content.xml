@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='1'>
+  <unit id='201604141826.org.xtext.antlr.generator' version='1.0.0.631cKskg67735E3A5A5I5I'>
+    <properties size='2'>
+      <property name='org.eclipse.equinox.p2.name' value='org.xtext.antlr.generator'/>
+      <property name='org.eclipse.equinox.p2.type.category' value='true'/>
+    </properties>
+    <provides size='1'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='201604141826.org.xtext.antlr.generator' version='1.0.0.631cKskg67735E3A5A5I5I'/>
+    </provides>
+    <requires size='1'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.xtext.antlr.generator.feature.feature.group' range='[3.2.1.201604141818,3.2.1.201604141818]'/>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+  </unit>
+</units>
